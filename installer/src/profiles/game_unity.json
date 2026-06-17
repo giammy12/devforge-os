@@ -1,0 +1,76 @@
+{
+  "id": "game_unity",
+  "name": "Game Developer — Unity",
+  "description": "Sviluppo giochi 2D/3D con Unity, C# e pipeline artistica completa",
+  "theme": "game-developer",
+  "accent_color": "#7B2FFF",
+  "icon": "game-unity.svg",
+  "packages": {
+    "apt": [
+      "dotnet-sdk-8.0",
+      "mono-complete", "monodevelop",
+      "blender",
+      "gimp", "gimp-plugin-registry",
+      "inkscape",
+      "audacity",
+      "libgtk-3-dev",
+      "libglib2.0-dev",
+      "libssl-dev",
+      "ffmpeg",
+      "python3", "python3-pip",
+      "git", "git-lfs",
+      "cmake", "ninja-build",
+      "libvulkan-dev", "libgl1-mesa-dev",
+      "libopenal-dev",
+      "p7zip-full"
+    ],
+    "npm_global": [],
+    "pip": [
+      "Pillow",
+      "numpy",
+      "scipy",
+      "matplotlib"
+    ]
+  },
+  "vscode_extensions": [
+    "ms-dotnettools.csharp",
+    "ms-dotnettools.vscode-dotnet-runtime",
+    "unity.unity-debug",
+    "ms-vscode.cpptools"
+  ],
+  "forge_ide_plugins": [
+    "csharp-support",
+    "unity-integration",
+    "git-lfs-support",
+    "shader-preview",
+    "asset-preview"
+  ],
+  "shell_aliases": {
+    "unity-hub": "/opt/unity-hub/UnityHub.AppImage",
+    "dotnet-test": "dotnet test",
+    "dotnet-build": "dotnet build",
+    "blender-bg": "blender --background",
+    "git-lfs-pull": "git lfs pull"
+  },
+  "environment_variables": {
+    "DOTNET_ROOT": "/usr/lib/dotnet",
+    "UNITY_PATH": "/opt/Unity"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# .NET SDK\nexport DOTNET_ROOT=/usr/lib/dotnet\nexport PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools\n\n# Unity Hub\nexport PATH=$PATH:/opt/unity-hub",
+    "gitconfig_extra": "[lfs]\n  repositoryformatversion = 0"
+  },
+  "default_projects_path": "~/projects/games",
+  "welcome_message": "Benvenuto nel tuo ambiente Unity! Unity Hub è installato — aprilo per scaricare l'editor Unity che preferisci. Blender, GIMP e Audacity sono pronti per la pipeline artistica.",
+  "first_run_script": "setup-game-unity.sh",
+  "recommended_projects": [
+    {
+      "name": "Nuovo progetto Unity 3D",
+      "command": "Apri Unity Hub e crea un nuovo progetto 3D URP"
+    },
+    {
+      "name": "Nuovo progetto Unity 2D",
+      "command": "Apri Unity Hub e crea un nuovo progetto 2D"
+    }
+  ]
+}

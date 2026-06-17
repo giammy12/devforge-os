@@ -1,0 +1,106 @@
+{
+  "id": "devops_docker",
+  "name": "DevOps — Docker & Kubernetes",
+  "description": "Containerizzazione, orchestrazione e infrastruttura come codice con Docker, Kubernetes e Terraform",
+  "theme": "devops",
+  "accent_color": "#00AAFF",
+  "icon": "devops-docker.svg",
+  "packages": {
+    "apt": [
+      "docker.io", "docker-compose-v2", "docker-buildx",
+      "kubectl",
+      "helm",
+      "terraform",
+      "ansible", "ansible-lint",
+      "python3", "python3-pip", "python3-venv",
+      "nodejs", "npm",
+      "git",
+      "jq", "yq",
+      "curl", "wget",
+      "httpie",
+      "openssl",
+      "vim",
+      "tmux",
+      "htop",
+      "net-tools", "iproute2"
+    ],
+    "npm_global": [
+      "yarn",
+      "ts-node", "typescript"
+    ],
+    "pip": [
+      "boto3",
+      "docker",
+      "kubernetes",
+      "ansible",
+      "molecule",
+      "pre-commit",
+      "yamllint",
+      "black", "ruff",
+      "pytest"
+    ]
+  },
+  "vscode_extensions": [
+    "ms-azuretools.vscode-docker",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "hashicorp.terraform",
+    "redhat.ansible",
+    "ms-python.python"
+  ],
+  "forge_ide_plugins": [
+    "docker-manager",
+    "kubernetes-explorer",
+    "terraform-support",
+    "yaml-enhanced",
+    "env-switcher",
+    "git-graph"
+  ],
+  "shell_aliases": {
+    "dc": "docker compose",
+    "dcup": "docker compose up -d",
+    "dcdown": "docker compose down",
+    "dclogs": "docker compose logs -f",
+    "dcps": "docker compose ps",
+    "dps": "docker ps --format 'table {{.Names}}\\t{{.Status}}\\t{{.Ports}}'",
+    "dprune": "docker system prune -af",
+    "k": "kubectl",
+    "kgp": "kubectl get pods",
+    "kgs": "kubectl get services",
+    "kgd": "kubectl get deployments",
+    "klog": "kubectl logs -f",
+    "kexec": "kubectl exec -it",
+    "helm-ls": "helm list --all-namespaces",
+    "tf": "terraform",
+    "tf-init": "terraform init",
+    "tf-plan": "terraform plan",
+    "tf-apply": "terraform apply",
+    "mini-start": "minikube start",
+    "mini-stop": "minikube stop"
+  },
+  "environment_variables": {
+    "DOCKER_BUILDKIT": "1",
+    "COMPOSE_DOCKER_CLI_BUILD": "1",
+    "KUBECONFIG": "$HOME/.kube/config"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# Docker BuildKit\nexport DOCKER_BUILDKIT=1\nexport COMPOSE_DOCKER_CLI_BUILD=1\n\n# Kubectl autocomplete\nsource <(kubectl completion zsh)\nalias k=kubectl\ncomplete -F __start_kubectl k\n\n# Helm autocomplete\nsource <(helm completion zsh)\n\n# Terraform autocomplete\nautoload -U +X bashcompinit && bashcompinit\ncomplete -o nospace -C /usr/bin/terraform terraform",
+    "gitconfig_extra": "[pull]\n  rebase = false"
+  },
+  "default_projects_path": "~/projects/devops",
+  "welcome_message": "Benvenuto nel tuo ambiente DevOps! Docker, Docker Compose, kubectl, helm, Terraform e Ansible sono pronti. Minikube è installato per il cluster Kubernetes locale. Usa 'mini-start' per avviarlo.",
+  "first_run_script": "setup-devops-docker.sh",
+  "recommended_projects": [
+    {
+      "name": "Cluster Kubernetes locale con Minikube",
+      "command": "minikube start --cpus=4 --memory=8g"
+    },
+    {
+      "name": "Infrastruttura Terraform locale",
+      "command": "mkdir my-infra && cd my-infra && terraform init"
+    },
+    {
+      "name": "Playbook Ansible base",
+      "command": "mkdir my-ansible && cd my-ansible && ansible-galaxy init my_role"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "embedded_linux",
+  "name": "Embedded — Linux Systems",
+  "description": "Sviluppo di sistemi embedded Linux con Buildroot, Yocto, U-Boot e cross-compilation",
+  "theme": "embedded",
+  "accent_color": "#FF6600",
+  "icon": "embedded-linux.svg",
+  "packages": {
+    "apt": [
+      "build-essential", "gcc", "g++", "make", "cmake", "ninja-build",
+      "gcc-arm-linux-gnueabihf", "g++-arm-linux-gnueabihf",
+      "gcc-aarch64-linux-gnu", "g++-aarch64-linux-gnu",
+      "gcc-riscv64-linux-gnu", "g++-riscv64-linux-gnu",
+      "binutils-arm-linux-gnueabihf",
+      "qemu-system-arm", "qemu-system-aarch64", "qemu-user-static",
+      "gdb-multiarch",
+      "u-boot-tools",
+      "device-tree-compiler",
+      "python3", "python3-pip", "python3-venv",
+      "git", "git-lfs",
+      "subversion", "cvs",
+      "cpio", "rsync",
+      "bc", "flex", "bison",
+      "libssl-dev", "libelf-dev", "libncurses-dev",
+      "openssl",
+      "fakeroot", "debootstrap",
+      "parted", "dosfstools", "e2fsprogs",
+      "nfs-kernel-server",
+      "tftp-hpa",
+      "minicom", "picocom"
+    ],
+    "npm_global": [],
+    "pip": [
+      "west",
+      "pyserial",
+      "cmake",
+      "ninja",
+      "black", "ruff"
+    ]
+  },
+  "vscode_extensions": [
+    "ms-vscode.cpptools",
+    "ms-vscode.cmake-tools",
+    "ms-vscode.hexeditor"
+  ],
+  "forge_ide_plugins": [
+    "cpp-support",
+    "cmake-tools",
+    "hex-viewer",
+    "device-tree-support",
+    "kconfig-support"
+  ],
+  "shell_aliases": {
+    "arm-cc": "arm-linux-gnueabihf-gcc",
+    "arm-cxx": "arm-linux-gnueabihf-g++",
+    "arm64-cc": "aarch64-linux-gnu-gcc",
+    "arm64-cxx": "aarch64-linux-gnu-g++",
+    "qemu-arm": "qemu-system-arm -M virt -cpu cortex-a15 -nographic",
+    "qemu-arm64": "qemu-system-aarch64 -M virt -cpu cortex-a57 -nographic",
+    "dtc-compile": "dtc -I dts -O dtb -o output.dtb",
+    "kernel-config": "make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig",
+    "kernel-build": "make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc)",
+    "mkimage-kernel": "mkimage -A arm -O linux -T kernel -C none -a 0x80008000 -e 0x80008000"
+  },
+  "environment_variables": {
+    "ARCH": "arm",
+    "CROSS_COMPILE": "arm-linux-gnueabihf-",
+    "BUILDROOT_PATH": "$HOME/buildroot"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# Cross-compilation default (modificabile per progetto)\nexport ARCH=arm\nexport CROSS_COMPILE=arm-linux-gnueabihf-\n\n# Buildroot\nexport BUILDROOT_PATH=$HOME/buildroot\nexport PATH=$PATH:$BUILDROOT_PATH/output/host/bin",
+    "gitconfig_extra": ""
+  },
+  "default_projects_path": "~/projects/embedded-linux",
+  "welcome_message": "Benvenuto nel tuo ambiente Embedded Linux! Cross-compiler per ARM, AArch64 e RISC-V installati. QEMU per emulazione, U-Boot tools, device-tree compiler. Buildroot e Yocto possono essere scaricati con il setup script.",
+  "first_run_script": "setup-embedded-linux.sh",
+  "recommended_projects": [
+    {
+      "name": "Buildroot minimal system",
+      "command": "git clone https://github.com/buildroot/buildroot.git $HOME/buildroot && cd $HOME/buildroot && make qemu_arm_vexpress_defconfig"
+    },
+    {
+      "name": "Kernel Linux ARM custom",
+      "command": "git clone --depth=1 https://github.com/torvalds/linux.git && cd linux && make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- vexpress_defconfig"
+    }
+  ]
+}

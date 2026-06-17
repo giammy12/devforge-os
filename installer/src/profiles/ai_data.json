@@ -1,0 +1,89 @@
+{
+  "id": "ai_data",
+  "name": "AI / Data Science",
+  "description": "Analisi dati, visualizzazione e business intelligence con Python, R e SQL",
+  "theme": "ai-datascience",
+  "accent_color": "#00FF41",
+  "icon": "ai-data.svg",
+  "packages": {
+    "apt": [
+      "python3", "python3-pip", "python3-venv", "python3-dev",
+      "r-base", "r-base-dev",
+      "build-essential", "gfortran",
+      "libopenblas-dev", "liblapack-dev",
+      "libhdf5-dev",
+      "libpq-dev", "libmysqlclient-dev",
+      "postgresql", "postgresql-client",
+      "sqlite3",
+      "git",
+      "wget", "curl",
+      "graphviz",
+      "libxml2-dev", "libcurl4-openssl-dev",
+      "htop"
+    ],
+    "npm_global": [],
+    "pip": [
+      "numpy", "pandas", "scipy",
+      "matplotlib", "seaborn", "plotly", "altair", "bokeh",
+      "jupyter", "jupyterlab", "notebook",
+      "ipywidgets", "ipykernel",
+      "scikit-learn", "statsmodels",
+      "xgboost", "lightgbm", "catboost",
+      "sqlalchemy", "psycopg2-binary", "pymysql",
+      "dbt-postgres", "dbt-core",
+      "great-expectations",
+      "apache-airflow",
+      "prefect",
+      "openpyxl", "xlrd", "xlwt",
+      "pyarrow", "fastparquet",
+      "dask",
+      "polars",
+      "black", "ruff",
+      "pytest"
+    ]
+  },
+  "vscode_extensions": [
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "REditorSupport.r",
+    "ms-python.black-formatter"
+  ],
+  "forge_ide_plugins": [
+    "jupyter-integration",
+    "python-enhanced",
+    "csv-preview",
+    "plot-viewer",
+    "sql-tools",
+    "r-support"
+  ],
+  "shell_aliases": {
+    "py": "python3",
+    "jlab": "jupyter lab --no-browser",
+    "jnb": "jupyter notebook --no-browser",
+    "pgcon": "psql -U postgres",
+    "dbt-run": "dbt run",
+    "dbt-test": "dbt test",
+    "dbt-docs": "dbt docs generate && dbt docs serve"
+  },
+  "environment_variables": {
+    "DATABASE_URL": "postgresql://localhost:5432/analytics",
+    "DBT_PROFILES_DIR": "$HOME/.dbt"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# R library path\nexport R_LIBS_USER=$HOME/R/library\nmkdir -p $R_LIBS_USER\n\n# dbt\nexport DBT_PROFILES_DIR=$HOME/.dbt",
+    "gitconfig_extra": ""
+  },
+  "default_projects_path": "~/projects/data",
+  "welcome_message": "Benvenuto nel tuo ambiente Data Science! Python con pandas, numpy, scikit-learn, Plotly e Jupyter è pronto. R è installato per l'analisi statistica. PostgreSQL è già avviato per i tuoi dataset. Avvia JupyterLab con 'jlab'.",
+  "first_run_script": "setup-ai-data.sh",
+  "recommended_projects": [
+    {
+      "name": "EDA (Exploratory Data Analysis)",
+      "command": "mkdir my-eda && cd my-eda && jupyter lab"
+    },
+    {
+      "name": "Pipeline dbt + PostgreSQL",
+      "command": "dbt init my_project"
+    }
+  ]
+}

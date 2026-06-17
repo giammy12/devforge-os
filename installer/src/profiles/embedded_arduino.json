@@ -1,0 +1,82 @@
+{
+  "id": "embedded_arduino",
+  "name": "Embedded — Arduino & PlatformIO",
+  "description": "Sviluppo firmware per microcontrollori Arduino, ESP32, STM32 e compatibili",
+  "theme": "embedded",
+  "accent_color": "#FF6600",
+  "icon": "embedded-arduino.svg",
+  "packages": {
+    "apt": [
+      "build-essential", "gcc", "g++", "make", "cmake",
+      "gcc-avr", "binutils-avr", "avr-libc", "avrdude",
+      "gcc-arm-none-eabi", "binutils-arm-none-eabi", "libnewlib-arm-none-eabi",
+      "python3", "python3-pip", "python3-venv",
+      "minicom", "cutecom", "picocom",
+      "screen",
+      "openocd",
+      "gdb-multiarch",
+      "libusb-dev", "libusb-1.0-0-dev",
+      "libhidapi-dev",
+      "udev",
+      "putty",
+      "wireshark",
+      "git",
+      "stlink-tools"
+    ],
+    "npm_global": [],
+    "pip": [
+      "platformio",
+      "esptool",
+      "pyserial",
+      "intelhex",
+      "srecord",
+      "black", "ruff"
+    ]
+  },
+  "vscode_extensions": [
+    "platformio.platformio-ide",
+    "ms-vscode.cpptools",
+    "ms-vscode.cmake-tools"
+  ],
+  "forge_ide_plugins": [
+    "cpp-support",
+    "platformio-integration",
+    "serial-monitor",
+    "hex-viewer"
+  ],
+  "shell_aliases": {
+    "pio": "platformio",
+    "pio-build": "platformio run",
+    "pio-upload": "platformio run --target upload",
+    "pio-monitor": "platformio device monitor",
+    "pio-test": "platformio test",
+    "arduino-cli": "/usr/local/bin/arduino-cli",
+    "serial": "minicom -D /dev/ttyUSB0 -b 115200",
+    "flash-avr": "avrdude -p m328p -c usbasp -U flash:w:",
+    "openocd-st": "openocd -f interface/stlink.cfg -f target/stm32f4x.cfg"
+  },
+  "environment_variables": {
+    "PLATFORMIO_HOME_DIR": "$HOME/.platformio"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# PlatformIO\nexport PLATFORMIO_HOME_DIR=$HOME/.platformio\nexport PATH=$PATH:$HOME/.platformio/penv/bin\n\n# Regola udev per accesso seriale senza sudo\n# (già configurata da setup script)\n\n# Funzione per connessione seriale rapida\nserial() { minicom -D ${1:-/dev/ttyUSB0} -b ${2:-115200} }",
+    "gitconfig_extra": ""
+  },
+  "default_projects_path": "~/projects/embedded",
+  "welcome_message": "Benvenuto nel tuo ambiente Embedded! PlatformIO, Arduino CLI, avr-gcc e arm-none-eabi-gcc sono installati. Il tuo utente è stato aggiunto ai gruppi 'dialout' e 'plugdev' per accedere alle porte seriali senza sudo. Usa 'pio-build' e 'pio-upload' per compilare e flashare.",
+  "first_run_script": "setup-embedded-arduino.sh",
+  "recommended_projects": [
+    {
+      "name": "Nuovo progetto PlatformIO (Arduino Uno)",
+      "command": "mkdir my-firmware && cd my-firmware && pio project init --board uno"
+    },
+    {
+      "name": "Nuovo progetto PlatformIO (ESP32)",
+      "command": "mkdir my-esp32 && cd my-esp32 && pio project init --board esp32dev"
+    },
+    {
+      "name": "Nuovo progetto PlatformIO (STM32)",
+      "command": "mkdir my-stm32 && cd my-stm32 && pio project init --board nucleo_f401re"
+    }
+  ]
+}

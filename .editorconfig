@@ -1,0 +1,59 @@
+# ============================================================
+# DevForge OS — EditorConfig
+# Garantisce stile di codice coerente su tutti gli editor
+# Documentazione: https://editorconfig.org
+# ============================================================
+
+root = true
+
+# --- Regole globali per tutti i file ---
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# --- JavaScript, TypeScript, JSON, YAML, HTML, CSS ---
+# Indentazione con 2 spazi (convenzione standard nel mondo JS/TS)
+[*.{js,jsx,ts,tsx,json,yaml,yml,html,css,scss,sass,svelte,vue}]
+indent_style = space
+indent_size = 2
+
+# --- Python ---
+# PEP 8 richiede 4 spazi
+[*.py]
+indent_style = space
+indent_size = 4
+max_line_length = 88
+
+# --- C e C++ (compositor Wayland) ---
+# Convenzione K&R con 4 spazi
+[*.{c,h,cpp,hpp}]
+indent_style = space
+indent_size = 4
+
+# --- Shell scripts ---
+[*.{sh,bash,zsh}]
+indent_style = space
+indent_size = 2
+
+# --- Makefile e meson.build ---
+# Make RICHIEDE tab (non spazi), meson preferisce 2 spazi
+[Makefile]
+indent_style = tab
+
+[meson.build]
+indent_style = space
+indent_size = 2
+
+# --- Markdown ---
+# Non rimuovere spazi finali (possono essere line break intenzionali)
+[*.md]
+trim_trailing_whitespace = false
+indent_style = space
+indent_size = 2
+
+# --- GLSL shaders ---
+[*.glsl]
+indent_style = space
+indent_size = 2

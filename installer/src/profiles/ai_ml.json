@@ -1,0 +1,96 @@
+{
+  "id": "ai_ml",
+  "name": "AI / Machine Learning",
+  "description": "Sviluppo e training di modelli ML/DL con PyTorch, TensorFlow e accelerazione ROCm/CUDA",
+  "theme": "ai-datascience",
+  "accent_color": "#00FF41",
+  "icon": "ai-ml.svg",
+  "packages": {
+    "apt": [
+      "python3", "python3-pip", "python3-venv", "python3-dev",
+      "build-essential", "gfortran",
+      "libopenblas-dev", "liblapack-dev",
+      "libhdf5-dev", "libhdf5-serial-dev",
+      "libffi-dev", "libssl-dev",
+      "git", "git-lfs",
+      "cmake", "ninja-build",
+      "rocm-dev", "rocm-libs", "miopen-hip",
+      "ffmpeg", "libsm6", "libxext6",
+      "graphviz",
+      "htop", "nvtop",
+      "wget", "curl"
+    ],
+    "npm_global": [],
+    "pip": [
+      "torch", "torchvision", "torchaudio",
+      "tensorflow",
+      "jax", "jaxlib",
+      "scikit-learn",
+      "numpy", "pandas", "scipy",
+      "matplotlib", "seaborn", "plotly",
+      "jupyter", "jupyterlab", "notebook",
+      "ipywidgets", "ipykernel",
+      "transformers", "datasets", "accelerate", "peft",
+      "langchain", "langchain-community",
+      "llama-cpp-python",
+      "sentence-transformers",
+      "chromadb", "faiss-cpu",
+      "openai", "anthropic",
+      "wandb", "mlflow",
+      "optuna",
+      "xgboost", "lightgbm",
+      "opencv-python",
+      "Pillow",
+      "tqdm", "rich",
+      "black", "ruff",
+      "pytest",
+      "huggingface-hub"
+    ]
+  },
+  "vscode_extensions": [
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "ms-python.black-formatter"
+  ],
+  "forge_ide_plugins": [
+    "jupyter-integration",
+    "python-enhanced",
+    "csv-preview",
+    "plot-viewer",
+    "model-inspector"
+  ],
+  "shell_aliases": {
+    "py": "python3",
+    "jlab": "jupyter lab --no-browser",
+    "jnb": "jupyter notebook --no-browser",
+    "torch-check": "python3 -c \"import torch; print('PyTorch:', torch.__version__); print('CUDA:', torch.cuda.is_available()); print('ROCm:', torch.cuda.is_available())\"",
+    "tf-check": "python3 -c \"import tensorflow as tf; print('TF:', tf.__version__); print('GPU:', tf.config.list_physical_devices('GPU'))\"",
+    "train": "python3 train.py",
+    "eval": "python3 evaluate.py"
+  },
+  "environment_variables": {
+    "ROCM_PATH": "/opt/rocm",
+    "HIP_VISIBLE_DEVICES": "0",
+    "PYTORCH_HIP_ALLOC_CONF": "max_split_size_mb:512",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "TOKENIZERS_PARALLELISM": "false",
+    "TRANSFORMERS_CACHE": "$HOME/.cache/huggingface"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# ROCm (AMD GPU)\nexport ROCM_PATH=/opt/rocm\nexport PATH=$PATH:$ROCM_PATH/bin\nexport LD_LIBRARY_PATH=$ROCM_PATH/lib:$LD_LIBRARY_PATH\n\n# HuggingFace cache\nexport TRANSFORMERS_CACHE=$HOME/.cache/huggingface\nexport HF_HOME=$HOME/.cache/huggingface",
+    "gitconfig_extra": "[lfs]\n  repositoryformatversion = 0"
+  },
+  "default_projects_path": "~/projects/ai",
+  "welcome_message": "Benvenuto nel tuo ambiente AI/ML! PyTorch, TensorFlow e Transformers sono installati con supporto ROCm per la tua AMD RX 6600. Usa 'torch-check' per verificare che la GPU sia riconosciuta. Avvia JupyterLab con 'jlab'.",
+  "first_run_script": "setup-ai-ml.sh",
+  "recommended_projects": [
+    {
+      "name": "Fine-tuning LLM con PEFT/LoRA",
+      "command": "mkdir my-finetune && cd my-finetune && python3 -c \"from peft import get_peft_model; print('PEFT pronto!')\""
+    },
+    {
+      "name": "Classificatore immagini PyTorch",
+      "command": "mkdir my-classifier && cd my-classifier && jupyter lab"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "id": "web_backend",
+  "name": "Web Developer — Backend",
+  "description": "Sviluppo server-side con Node.js, Python, Java, Go e database relazionali e NoSQL",
+  "theme": "web-developer",
+  "accent_color": "#0066FF",
+  "icon": "web-backend.svg",
+  "packages": {
+    "apt": [
+      "nodejs", "npm",
+      "python3", "python3-pip", "python3-venv",
+      "default-jdk", "maven", "gradle",
+      "golang-go",
+      "php8.2", "php8.2-cli", "php8.2-fpm", "php8.2-mysql", "php8.2-pgsql",
+      "composer",
+      "postgresql", "postgresql-client",
+      "mysql-server", "mysql-client",
+      "redis-server", "redis-tools",
+      "mongodb-org",
+      "docker.io", "docker-compose-v2",
+      "nginx",
+      "postman",
+      "httpie",
+      "jq", "yq",
+      "libpq-dev", "libmysqlclient-dev"
+    ],
+    "npm_global": [
+      "nodemon",
+      "pm2",
+      "express-generator",
+      "nestjs",
+      "@nestjs/cli",
+      "prisma",
+      "drizzle-kit",
+      "ts-node",
+      "typescript",
+      "graphql-cli",
+      "artillery"
+    ],
+    "pip": [
+      "django", "djangorestframework",
+      "flask", "flask-sqlalchemy",
+      "fastapi", "uvicorn", "gunicorn",
+      "sqlalchemy", "alembic",
+      "psycopg2-binary", "pymysql",
+      "redis", "celery",
+      "pydantic", "httpx",
+      "pytest", "pytest-asyncio",
+      "black", "ruff", "mypy",
+      "poetry"
+    ]
+  },
+  "vscode_extensions": [
+    "ms-python.python",
+    "ms-python.black-formatter",
+    "bradlc.vscode-tailwindcss",
+    "rangav.vscode-thunder-client",
+    "ckolkman.vscode-postgres"
+  ],
+  "forge_ide_plugins": [
+    "rest-client",
+    "database-explorer",
+    "docker-manager",
+    "openapi-preview",
+    "git-graph",
+    "env-switcher"
+  ],
+  "shell_aliases": {
+    "py": "python3",
+    "pip": "pip3",
+    "dj": "python manage.py",
+    "djrun": "python manage.py runserver",
+    "djmig": "python manage.py migrate",
+    "djmm": "python manage.py makemigrations",
+    "pm2ls": "pm2 list",
+    "pm2l": "pm2 logs",
+    "dc": "docker compose",
+    "dcup": "docker compose up -d",
+    "dcdown": "docker compose down",
+    "dclogs": "docker compose logs -f",
+    "pgcon": "psql -U postgres",
+    "gorun": "go run .",
+    "gobuild": "go build -o bin/app ."
+  },
+  "environment_variables": {
+    "NODE_ENV": "development",
+    "GOPATH": "$HOME/go",
+    "JAVA_HOME": "/usr/lib/jvm/default-java",
+    "DATABASE_URL": "postgresql://localhost:5432/devdb"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# Go\nexport GOPATH=$HOME/go\nexport PATH=$PATH:$GOPATH/bin\n\n# Java\nexport JAVA_HOME=/usr/lib/jvm/default-java\nexport PATH=$JAVA_HOME/bin:$PATH\n\n# NVM\nexport NVM_DIR=\"$HOME/.nvm\"\n[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"",
+    "gitconfig_extra": "[pull]\n  rebase = false"
+  },
+  "default_projects_path": "~/projects/backend",
+  "welcome_message": "Benvenuto nel tuo ambiente Backend! Node.js, Python (Django/FastAPI), Java, Go e i database sono configurati. PostgreSQL e Redis sono già in esecuzione.",
+  "first_run_script": "setup-web-backend.sh",
+  "recommended_projects": [
+    {
+      "name": "FastAPI + PostgreSQL",
+      "command": "cookiecutter gh:tiangolo/full-stack-fastapi-template"
+    },
+    {
+      "name": "NestJS",
+      "command": "npx @nestjs/cli new my-api"
+    },
+    {
+      "name": "Django REST",
+      "command": "django-admin startproject myapi && cd myapi && pip install djangorestframework"
+    },
+    {
+      "name": "Go + Gin",
+      "command": "mkdir my-api && cd my-api && go mod init my-api && go get github.com/gin-gonic/gin"
+    }
+  ]
+}

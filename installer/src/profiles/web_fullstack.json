@@ -1,0 +1,110 @@
+{
+  "id": "web_fullstack",
+  "name": "Web Developer — Fullstack",
+  "description": "Ambiente completo frontend + backend + deploy: dal prototipo alla produzione",
+  "theme": "web-developer",
+  "accent_color": "#0066FF",
+  "icon": "web-fullstack.svg",
+  "packages": {
+    "apt": [
+      "nodejs", "npm",
+      "python3", "python3-pip", "python3-venv",
+      "default-jdk",
+      "golang-go",
+      "postgresql", "postgresql-client",
+      "redis-server", "redis-tools",
+      "docker.io", "docker-compose-v2",
+      "nginx",
+      "certbot", "python3-certbot-nginx",
+      "chromium", "chromium-driver",
+      "imagemagick", "optipng",
+      "jq", "yq", "httpie",
+      "libpq-dev", "libssl-dev"
+    ],
+    "npm_global": [
+      "yarn", "pnpm",
+      "vite", "typescript", "ts-node",
+      "nodemon", "pm2",
+      "@nestjs/cli",
+      "prisma",
+      "eslint", "prettier",
+      "serve", "http-server",
+      "npm-check-updates",
+      "playwright"
+    ],
+    "pip": [
+      "fastapi", "uvicorn", "gunicorn",
+      "sqlalchemy", "alembic", "psycopg2-binary",
+      "redis", "celery",
+      "pydantic", "httpx",
+      "pytest", "pytest-asyncio",
+      "black", "ruff", "mypy",
+      "fabric", "invoke",
+      "poetry"
+    ]
+  },
+  "vscode_extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-python.python",
+    "bradlc.vscode-tailwindcss",
+    "rangav.vscode-thunder-client",
+    "ckolkman.vscode-postgres",
+    "ms-azuretools.vscode-docker"
+  ],
+  "forge_ide_plugins": [
+    "html-preview",
+    "css-tools",
+    "tailwind-intellisense",
+    "rest-client",
+    "database-explorer",
+    "docker-manager",
+    "openapi-preview",
+    "git-graph",
+    "env-switcher",
+    "color-picker"
+  ],
+  "shell_aliases": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "py": "python3",
+    "dc": "docker compose",
+    "dcup": "docker compose up -d",
+    "dcdown": "docker compose down",
+    "dclogs": "docker compose logs -f",
+    "deploy": "bash ./scripts/deploy.sh",
+    "pgcon": "psql -U postgres",
+    "nginx-reload": "sudo nginx -s reload",
+    "nginx-test": "sudo nginx -t",
+    "pm2ls": "pm2 list",
+    "pm2save": "pm2 save && pm2 startup"
+  },
+  "environment_variables": {
+    "NODE_ENV": "development",
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "GOPATH": "$HOME/go",
+    "DATABASE_URL": "postgresql://localhost:5432/devdb",
+    "REDIS_URL": "redis://localhost:6379"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# NVM\nexport NVM_DIR=\"$HOME/.nvm\"\n[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"\n\n# PNPM\nexport PNPM_HOME=\"$HOME/.local/share/pnpm\"\nexport PATH=\"$PNPM_HOME:$PATH\"\n\n# Go\nexport GOPATH=$HOME/go\nexport PATH=$PATH:$GOPATH/bin",
+    "gitconfig_extra": "[pull]\n  rebase = false\n[push]\n  default = current"
+  },
+  "default_projects_path": "~/projects",
+  "welcome_message": "Benvenuto nel tuo ambiente Fullstack! Hai tutto il necessario: frontend (React/Vue/Svelte), backend (Node/Python/Go), database (PostgreSQL/Redis), Docker e Nginx. Inizia con 'dc up -d' per avviare i servizi.",
+  "first_run_script": "setup-web-fullstack.sh",
+  "recommended_projects": [
+    {
+      "name": "T3 Stack (Next.js + tRPC + Prisma)",
+      "command": "npm create t3-app@latest"
+    },
+    {
+      "name": "SvelteKit + FastAPI",
+      "command": "npm create svelte@latest my-app"
+    },
+    {
+      "name": "Next.js + NestJS (monorepo)",
+      "command": "npx create-nx-workspace@latest"
+    }
+  ]
+}

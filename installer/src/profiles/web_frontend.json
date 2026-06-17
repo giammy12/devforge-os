@@ -1,0 +1,94 @@
+{
+  "id": "web_frontend",
+  "name": "Web Developer — Frontend",
+  "description": "Sviluppo interfacce web moderne con React, Vue, Angular e TypeScript",
+  "theme": "web-developer",
+  "accent_color": "#0066FF",
+  "icon": "web-frontend.svg",
+  "packages": {
+    "apt": [
+      "nodejs", "npm",
+      "chromium", "chromium-driver",
+      "sass",
+      "imagemagick", "optipng", "jpegoptim",
+      "watchman",
+      "libssl-dev", "libffi-dev"
+    ],
+    "npm_global": [
+      "yarn", "pnpm",
+      "vite", "create-vite",
+      "eslint", "prettier",
+      "typescript", "ts-node",
+      "serve", "live-server",
+      "http-server",
+      "npm-check-updates",
+      "@vue/cli",
+      "create-react-app",
+      "@angular/cli",
+      "svelte-kit",
+      "storybook",
+      "playwright",
+      "cypress"
+    ],
+    "pip": ["nodeenv", "pre-commit"]
+  },
+  "vscode_extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "vue.volar",
+    "ms-vscode.vscode-typescript-next"
+  ],
+  "forge_ide_plugins": [
+    "html-preview",
+    "css-tools",
+    "tailwind-intellisense",
+    "emmet-enhanced",
+    "svg-preview",
+    "color-picker",
+    "rest-client",
+    "git-graph"
+  ],
+  "shell_aliases": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "preview": "npm run preview",
+    "test": "npm run test",
+    "lint": "npm run lint",
+    "fmt": "prettier --write .",
+    "deps": "npm-check-updates -u && npm install",
+    "new-react": "npm create vite@latest",
+    "new-vue": "npm create vue@latest",
+    "new-next": "npx create-next-app@latest"
+  },
+  "environment_variables": {
+    "NODE_ENV": "development",
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "BROWSER": "forge-navigator"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# NVM — Node Version Manager\nexport NVM_DIR=\"$HOME/.nvm\"\n[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"\n[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\"\n\n# PNPM\nexport PNPM_HOME=\"$HOME/.local/share/pnpm\"\nexport PATH=\"$PNPM_HOME:$PATH\"",
+    "gitconfig_extra": "[core]\n  autocrlf = input\n[pull]\n  rebase = false"
+  },
+  "default_projects_path": "~/projects/web",
+  "welcome_message": "Benvenuto nel tuo ambiente Frontend! React, Vue, Angular e TypeScript sono pronti. Usa 'new-react', 'new-vue' o 'new-next' per creare un progetto.",
+  "first_run_script": "setup-web-frontend.sh",
+  "recommended_projects": [
+    {
+      "name": "React + TypeScript (Vite)",
+      "command": "npm create vite@latest my-app -- --template react-ts"
+    },
+    {
+      "name": "Vue 3 + TypeScript",
+      "command": "npm create vue@latest"
+    },
+    {
+      "name": "Next.js",
+      "command": "npx create-next-app@latest"
+    },
+    {
+      "name": "Astro",
+      "command": "npm create astro@latest"
+    }
+  ]
+}

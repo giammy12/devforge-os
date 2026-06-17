@@ -1,0 +1,103 @@
+{
+  "id": "devops_cloud",
+  "name": "DevOps — Cloud Engineering",
+  "description": "Gestione infrastruttura multi-cloud con AWS, GCP, Azure, Pulumi e observability avanzata",
+  "theme": "devops",
+  "accent_color": "#00AAFF",
+  "icon": "devops-cloud.svg",
+  "packages": {
+    "apt": [
+      "docker.io", "docker-compose-v2",
+      "kubectl", "helm",
+      "terraform",
+      "ansible",
+      "python3", "python3-pip", "python3-venv",
+      "nodejs", "npm",
+      "git",
+      "jq", "yq",
+      "curl", "wget",
+      "openssl",
+      "vim",
+      "tmux",
+      "htop",
+      "net-tools"
+    ],
+    "npm_global": [
+      "yarn",
+      "typescript", "ts-node",
+      "@pulumi/pulumi"
+    ],
+    "pip": [
+      "boto3", "awscli",
+      "google-cloud-storage", "google-cloud-compute",
+      "azure-mgmt-compute", "azure-identity",
+      "pulumi",
+      "ansible",
+      "kubernetes",
+      "prometheus-client",
+      "pre-commit",
+      "black", "ruff",
+      "pytest"
+    ]
+  },
+  "vscode_extensions": [
+    "ms-azuretools.vscode-docker",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "hashicorp.terraform",
+    "amazonwebservices.aws-toolkit-vscode",
+    "googlecloudtools.cloudcode",
+    "ms-azure-devops.azure-pipelines"
+  ],
+  "forge_ide_plugins": [
+    "docker-manager",
+    "kubernetes-explorer",
+    "terraform-support",
+    "yaml-enhanced",
+    "env-switcher",
+    "cloud-explorer",
+    "git-graph"
+  ],
+  "shell_aliases": {
+    "dc": "docker compose",
+    "k": "kubectl",
+    "kgp": "kubectl get pods --all-namespaces",
+    "tf": "terraform",
+    "tf-plan": "terraform plan",
+    "tf-apply": "terraform apply --auto-approve",
+    "tf-destroy": "terraform destroy",
+    "pu": "pulumi",
+    "pu-up": "pulumi up",
+    "pu-preview": "pulumi preview",
+    "pu-destroy": "pulumi destroy",
+    "aws-whoami": "aws sts get-caller-identity",
+    "gcp-whoami": "gcloud auth list",
+    "az-whoami": "az account show",
+    "prom-up": "docker compose -f /opt/monitoring/docker-compose.yml up -d"
+  },
+  "environment_variables": {
+    "AWS_DEFAULT_REGION": "eu-west-1",
+    "KUBECONFIG": "$HOME/.kube/config",
+    "PULUMI_HOME": "$HOME/.pulumi"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# AWS\nexport AWS_DEFAULT_REGION=eu-west-1\n\n# GCP\nexport GOOGLE_APPLICATION_CREDENTIALS=$HOME/.gcp/credentials.json\n\n# Pulumi\nexport PULUMI_HOME=$HOME/.pulumi\nexport PATH=$PATH:$PULUMI_HOME/bin\n\n# Kubectl\nsource <(kubectl completion zsh)\nalias k=kubectl\ncomplete -F __start_kubectl k\n\n# Terraform\nautoload -U +X bashcompinit && bashcompinit\ncomplete -o nospace -C /usr/bin/terraform terraform",
+    "gitconfig_extra": "[pull]\n  rebase = false"
+  },
+  "default_projects_path": "~/projects/cloud",
+  "welcome_message": "Benvenuto nel tuo ambiente Cloud Engineering! AWS CLI, GCP SDK, Azure CLI, Terraform, Pulumi e kubectl sono installati. Stack di monitoring (Prometheus + Grafana) disponibile con 'prom-up'. Configura le credenziali cloud con 'aws configure', 'gcloud auth login' e 'az login'.",
+  "first_run_script": "setup-devops-cloud.sh",
+  "recommended_projects": [
+    {
+      "name": "Infrastruttura AWS con Terraform",
+      "command": "mkdir my-aws-infra && cd my-aws-infra && terraform init"
+    },
+    {
+      "name": "Infrastruttura multi-cloud con Pulumi (TypeScript)",
+      "command": "mkdir my-cloud && cd my-cloud && pulumi new typescript"
+    },
+    {
+      "name": "Stack Prometheus + Grafana locale",
+      "command": "bash /opt/monitoring/setup.sh"
+    }
+  ]
+}

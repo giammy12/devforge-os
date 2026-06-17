@@ -1,0 +1,65 @@
+{
+  "id": "game_godot",
+  "name": "Game Developer — Godot",
+  "description": "Sviluppo giochi open-source con Godot 4, GDScript e pipeline 2D/3D leggera",
+  "theme": "game-developer",
+  "accent_color": "#7B2FFF",
+  "icon": "game-godot.svg",
+  "packages": {
+    "apt": [
+      "python3", "python3-pip",
+      "blender",
+      "gimp", "gimp-plugin-registry",
+      "inkscape",
+      "audacity", "ffmpeg",
+      "libvulkan-dev", "vulkan-tools",
+      "libgl1-mesa-dev",
+      "git", "git-lfs",
+      "p7zip-full",
+      "libsdl2-dev",
+      "libogg-dev", "libvorbis-dev",
+      "libpng-dev", "libjpeg-dev"
+    ],
+    "npm_global": [],
+    "pip": [
+      "Pillow", "numpy",
+      "gdtoolkit"
+    ]
+  },
+  "vscode_extensions": [
+    "geequlim.godot-tools",
+    "ms-python.python"
+  ],
+  "forge_ide_plugins": [
+    "godot-integration",
+    "gdscript-support",
+    "asset-preview",
+    "git-lfs-support"
+  ],
+  "shell_aliases": {
+    "godot": "/opt/Godot_v4/Godot_v4.x.x-stable_linux.x86_64",
+    "godot-editor": "/opt/Godot_v4/Godot_v4.x.x-stable_linux.x86_64 --editor",
+    "gdformat": "gdformat",
+    "gdlint": "gdlint"
+  },
+  "environment_variables": {
+    "GODOT4_PATH": "/opt/Godot_v4"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# Godot 4\nexport GODOT4_PATH=/opt/Godot_v4\nexport PATH=$PATH:$GODOT4_PATH\nalias godot='$GODOT4_PATH/Godot_v4.x.x-stable_linux.x86_64'",
+    "gitconfig_extra": "[lfs]\n  repositoryformatversion = 0"
+  },
+  "default_projects_path": "~/projects/games",
+  "welcome_message": "Benvenuto nel tuo ambiente Godot! Godot 4 è installato in /opt/Godot_v4. Blender per la grafica 3D, Aseprite per i pixel art 2D e FMOD per l'audio sono disponibili. GDFormat e GDLint mantengono il codice pulito.",
+  "first_run_script": "setup-game-godot.sh",
+  "recommended_projects": [
+    {
+      "name": "Nuovo progetto Godot 4 2D",
+      "command": "godot-editor (crea nuovo progetto 2D)"
+    },
+    {
+      "name": "Nuovo progetto Godot 4 3D",
+      "command": "godot-editor (crea nuovo progetto 3D)"
+    }
+  ]
+}

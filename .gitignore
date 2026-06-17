@@ -1,0 +1,96 @@
+# ============================================================
+# DevForge OS — .gitignore
+# Esclude file temporanei, cache di build e dati sensibili
+# ============================================================
+
+# --- Build live-build (possono pesare decine di GB) ---
+build/live-build-config/cache/
+build/live-build-config/chroot/
+build/live-build-config/.build/
+build/live-build-config/binary/
+build/live-build-config/binary.modified_timestamps
+build/live-build-config/chroot.files
+build/live-build-config/chroot.packages.live
+build/live-build-config/chroot.packages.install
+
+# --- File ISO generati (troppo grandi per git) ---
+*.iso
+*.img
+output/
+
+# --- Node.js / Electron (forge-ide) ---
+forge-ide/node_modules/
+forge-ide/dist/
+forge-ide/out/
+forge-ide/.vite/
+forge-community/node_modules/
+forge-store/node_modules/
+node_modules/
+
+# --- Python (forge-ai, installer, desktop) ---
+forge-ai/venv/
+forge-ai/.venv/
+installer/venv/
+installer/.venv/
+desktop/venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Modelli AI (file GGUF enormi, 4-8GB ciascuno) ---
+forge-ai/models/
+*.gguf
+*.ggml
+*.bin
+
+# --- Database e cache locali ---
+*.db
+*.sqlite
+*.sqlite3
+forge-ai/chroma_db/
+redis_dump.rdb
+
+# --- Variabili d'ambiente e segreti ---
+.env
+.env.local
+.env.*.local
+*.secret
+secrets/
+credentials/
+*.pem
+*.key
+*.crt
+
+# --- Editor e IDE (file locali degli sviluppatori) ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Log ---
+*.log
+logs/
+/var/log/
+
+# --- Compilati C (compositor) ---
+desktop/compositor/build/
+desktop/dock/build/
+desktop/topbar/build/
+*.o
+*.so
+*.a
+
+# --- Electron Builder output ---
+forge-ide/release/

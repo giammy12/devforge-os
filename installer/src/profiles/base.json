@@ -1,0 +1,50 @@
+{
+  "id": "base",
+  "name": "Base System",
+  "description": "Pacchetti di sistema installati su tutti i profili",
+  "theme": "base",
+  "accent_color": "#FFFFFF",
+  "icon": "base.svg",
+  "packages": {
+    "apt": [
+      "zsh", "git", "curl", "wget", "htop", "neofetch", "tree", "unzip", "zip",
+      "rsync", "ssh", "gnupg2", "ca-certificates", "lsb-release", "apt-transport-https",
+      "build-essential", "pkg-config", "cmake", "ninja-build",
+      "python3", "python3-pip", "python3-venv",
+      "fonts-jetbrains-mono", "fonts-inter",
+      "pipewire", "wireplumber", "pipewire-pulse",
+      "network-manager", "network-manager-gnome",
+      "thunar", "file-roller",
+      "sqlite3", "redis-server",
+      "wl-clipboard", "grim", "slurp",
+      "brightnessctl", "playerctl"
+    ],
+    "npm_global": [],
+    "pip": ["ipython"]
+  },
+  "shell_aliases": {
+    "ll": "ls -lah --color=auto",
+    "la": "ls -A --color=auto",
+    "..": "cd ..",
+    "...": "cd ../..",
+    "gs": "git status",
+    "ga": "git add",
+    "gc": "git commit",
+    "gp": "git push",
+    "gl": "git log --oneline --graph --decorate",
+    "update": "sudo apt update && sudo apt upgrade -y"
+  },
+  "environment_variables": {
+    "EDITOR": "forge-ide",
+    "VISUAL": "forge-ide",
+    "TERM": "xterm-256color"
+  },
+  "dotfiles": {
+    "zshrc_extra": "",
+    "gitconfig_extra": ""
+  },
+  "default_projects_path": "~/projects",
+  "welcome_message": "Benvenuto in DevForge OS!",
+  "first_run_script": "",
+  "recommended_projects": []
+}

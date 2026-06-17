@@ -1,0 +1,72 @@
+{
+  "id": "game_unreal",
+  "name": "Game Developer — Unreal Engine",
+  "description": "Sviluppo AAA con Unreal Engine 5, C++ e pipeline artistica professionale",
+  "theme": "game-developer",
+  "accent_color": "#7B2FFF",
+  "icon": "game-unreal.svg",
+  "packages": {
+    "apt": [
+      "build-essential", "clang", "clang-format", "clang-tidy",
+      "cmake", "ninja-build", "ccache",
+      "libvulkan-dev", "vulkan-tools", "mesa-vulkan-drivers",
+      "libgl1-mesa-dev", "libgles2-mesa-dev",
+      "libx11-dev", "libxrandr-dev", "libxi-dev", "libxcursor-dev",
+      "libssl-dev", "libcurl4-openssl-dev",
+      "python3", "python3-pip",
+      "git", "git-lfs",
+      "blender",
+      "gimp",
+      "inkscape",
+      "audacity", "ffmpeg",
+      "p7zip-full", "zip", "unzip",
+      "libsdl2-dev",
+      "libogg-dev", "libvorbis-dev",
+      "ocl-icd-opencl-dev"
+    ],
+    "npm_global": [],
+    "pip": [
+      "Pillow", "numpy"
+    ]
+  },
+  "vscode_extensions": [
+    "ms-vscode.cpptools",
+    "ms-vscode.cmake-tools",
+    "ms-vscode.cpptools-extension-pack",
+    "twxs.cmake"
+  ],
+  "forge_ide_plugins": [
+    "cpp-support",
+    "cmake-tools",
+    "shader-preview",
+    "git-lfs-support",
+    "asset-preview"
+  ],
+  "shell_aliases": {
+    "ue5": "/opt/UnrealEngine/Engine/Binaries/Linux/UnrealEditor",
+    "ue5-build": "/opt/UnrealEngine/Engine/Build/BatchFiles/Linux/Build.sh",
+    "cc": "clang",
+    "cxx": "clang++",
+    "cmake-release": "cmake -DCMAKE_BUILD_TYPE=Release -G Ninja ..",
+    "cmake-debug": "cmake -DCMAKE_BUILD_TYPE=Debug -G Ninja .."
+  },
+  "environment_variables": {
+    "CC": "clang",
+    "CXX": "clang++",
+    "UE5_ROOT": "/opt/UnrealEngine",
+    "CCACHE_DIR": "$HOME/.ccache"
+  },
+  "dotfiles": {
+    "zshrc_extra": "# Unreal Engine 5\nexport UE5_ROOT=/opt/UnrealEngine\nexport PATH=$PATH:$UE5_ROOT/Engine/Binaries/Linux\n\n# Clang\nexport CC=clang\nexport CXX=clang++\n\n# CCache (velocizza le ricompilazioni)\nexport CCACHE_DIR=$HOME/.ccache\nexport PATH=/usr/lib/ccache:$PATH",
+    "gitconfig_extra": "[lfs]\n  repositoryformatversion = 0\n[core]\n  autocrlf = false"
+  },
+  "default_projects_path": "~/projects/games",
+  "welcome_message": "Benvenuto nel tuo ambiente Unreal Engine! Clang, CMake e tutte le librerie necessarie sono installati. Nota: Unreal Engine 5 richiede di essere compilato dal sorgente — esegui 'setup-game-unreal.sh' per la procedura guidata.",
+  "first_run_script": "setup-game-unreal.sh",
+  "recommended_projects": [
+    {
+      "name": "Nuovo progetto UE5 C++",
+      "command": "/opt/UnrealEngine/Engine/Binaries/Linux/UnrealEditor"
+    }
+  ]
+}
