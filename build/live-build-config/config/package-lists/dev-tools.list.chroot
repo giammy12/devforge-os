@@ -1,0 +1,57 @@
+# =============================================================================
+# DevForge OS — Tool di sviluppo comuni a tutti i profili
+#
+# Questi tool sono installati su tutti i profili perché utili
+# per qualsiasi tipo di sviluppo.
+# =============================================================================
+
+# --- Git e versioning ---
+git
+git-lfs
+git-gui
+gitk
+
+# --- Editor fallback (per terminale) ---
+vim
+nano
+
+# --- Linguaggi base ---
+python3
+python3-pip
+python3-venv
+python3-dev
+
+# --- Compilatori e build ---
+gcc
+g++
+make
+cmake
+ninja-build
+pkg-config
+autoconf
+automake
+
+# --- Debug ---
+gdb
+valgrind
+strace
+ltrace
+
+# --- Network dev tools ---
+curl
+wget
+httpie
+netcat-openbsd
+nmap
+
+# --- Container ---
+docker.io
+docker-compose
+
+# --- Node.js (versione Debian — sarà aggiornato dal profilo) ---
+nodejs
+npm
+
+# --- Redis (cache per AI e sessioni) ---
+redis-server
+redis-tools

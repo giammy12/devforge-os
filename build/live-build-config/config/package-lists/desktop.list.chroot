@@ -1,0 +1,49 @@
+# =============================================================================
+# DevForge OS — Pacchetti desktop environment
+#
+# Pacchetti necessari per il compositor Wayland custom,
+# il dock, la topbar e le app di sistema.
+# =============================================================================
+
+# --- Dipendenze compositor wlroots ---
+libwlroots-dev
+libegl-dev
+libgles2-mesa-dev
+libdrm-dev
+libgbm-dev
+libinput-dev
+libudev-dev
+libxkbcommon-dev
+libpixman-1-dev
+libwayland-dev
+wayland-protocols
+xwayland
+
+# --- Display manager (avvia il compositor al login) ---
+greetd
+greetd-tuigreet
+
+# --- Applicazioni sistema GTK4 ---
+libgtk-4-dev
+libadwaita-1-dev
+libglib2.0-dev
+
+# --- Gestore file di base ---
+nautilus
+
+# --- Archivi ---
+file-roller
+
+# --- Notifiche ---
+libnotify-bin
+notification-daemon
+
+# --- Polkit (autorizzazioni GUI) ---
+policykit-1
+polkit-gnome
+
+# --- Stampa (opzionale ma utile) ---
+cups
+
+# --- Accessibilità ---
+at-spi2-core

@@ -1,0 +1,102 @@
+# =============================================================================
+# DevForge OS — Pacchetti base installati in TUTTI i profili
+#
+# Questo file viene letto da live-build durante la fase chroot.
+# Ogni riga è un pacchetto apt. I commenti iniziano con #.
+# =============================================================================
+
+# --- Shell e terminale ---
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
+bash-completion
+tmux
+
+# --- Tool di sistema fondamentali ---
+systemd
+systemd-sysv
+sudo
+curl
+wget
+git
+rsync
+ssh
+openssh-client
+gnupg2
+ca-certificates
+lsb-release
+apt-transport-https
+software-properties-common
+
+# --- Utilità base ---
+htop
+neofetch
+tree
+unzip
+zip
+p7zip-full
+file
+xxd
+jq
+less
+man-db
+locales
+
+# --- Sviluppo base ---
+build-essential
+pkg-config
+cmake
+ninja-build
+gcc
+g++
+make
+python3
+python3-pip
+python3-venv
+
+# --- Font di sistema ---
+fonts-jetbrains-mono
+fonts-inter
+fonts-noto
+
+# --- Audio (PipeWire — moderno sostituto di PulseAudio) ---
+pipewire
+wireplumber
+pipewire-pulse
+pipewire-audio
+pavucontrol
+
+# --- Rete ---
+network-manager
+network-manager-gnome
+iproute2
+net-tools
+wireguard
+wireguard-tools
+
+# --- Grafica e Wayland ---
+wayland-protocols
+libwayland-client0
+libwayland-server0
+libwayland-egl1
+mesa-vulkan-drivers
+libgl1-mesa-dri
+libgles2
+
+# --- GTK4 per le applicazioni native ---
+libgtk-4-1
+libadwaita-1-0
+gtk-update-icon-cache
+
+# --- Database locali ---
+sqlite3
+
+# --- Utility clipboard e screenshot Wayland ---
+wl-clipboard
+grim
+slurp
+
+# --- Controllo sistema ---
+brightnessctl
+playerctl
+upower

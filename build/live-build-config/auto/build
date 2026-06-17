@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# =============================================================================
+# DevForge OS — live-build auto/build
+# Avvia la build dell'ISO. Chiamato automaticamente da 'lb build'.
+# =============================================================================
+
+set -euo pipefail
+lb build "${@}"

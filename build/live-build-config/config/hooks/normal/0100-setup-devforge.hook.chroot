@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+# =============================================================================
+# DevForge OS — Hook chroot: configurazione sistema base
+#
+# Questo script gira DENTRO il chroot durante la build dell'ISO.
+# "Chroot" significa che siamo dentro il filesystem del futuro OS,
+# ma senza il kernel vero — è come se fossimo già sul sistema installato.
+#
+# Viene eseguito da live-build dopo l'installazione dei pacchetti.
+# =============================================================================
+
+set -euo pipefail
+
+echo "=== DevForge OS: Configurazione sistema base ==="
+
+# --- 1. Configura locale italiano ---
+echo "it_IT.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
+update-locale LANG=it_IT.UTF-8 LC_ALL=it_IT.UTF-8
+
+# --- 2. Timezone Roma ---
+ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
+echo "Europe/Rome" > /etc/timezone
+
+# --- 3. Imposta Zsh come shell di default per i nuovi utenti ---
+chsh -s /usr/bin/zsh root 2>/dev/null || true
+sed -i 's|DSHELL=/bin/bash|DSHELL=/usr/bin/zsh|g' /etc/adduser.conf
+
+# --- 4. Configura Oh My Zsh skeleton (usato per ogni nuovo utente) ---
+# Scarica oh-my-zsh nella directory skeleton — verrà copiato in ~/
+if [[ ! -d "/etc/skel/.oh-my-zsh" ]]; then
+    git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git /etc/skel/.oh-my-zsh
+fi
+
+# .zshrc base
+cat > /etc/skel/.zshrc << 'ZSHEOF'
+# DevForge OS — configurazione Zsh base
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+
+plugins=(
+    git
+    docker
+    kubectl
+    python
+    node
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    history-substring-search
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# Alias base
+alias ll='ls -lah --color=auto'
+alias la='ls -A --color=auto'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git log --oneline --graph --decorate'
+alias update='sudo apt update && sudo apt upgrade -y'
+ZSHEOF
+
+# --- 5. Configura greetd (display manager minimale per Wayland) ---
+mkdir -p /etc/greetd
+cat > /etc/greetd/config.toml << 'GREETDEOF'
+[terminal]
+vt = 1
+
+[default_session]
+command = "tuigreet --time --remember --cmd forge-compositor"
+user = "greeter"
+GREETDEOF
+
+# Crea utente greeter se non esiste
+if ! id greeter &>/dev/null; then
+    useradd -r -s /sbin/nologin greeter 2>/dev/null || true
+fi
+
+systemctl enable greetd 2>/dev/null || true
+
+# --- 6. Servizi systemd da abilitare ---
+systemctl enable NetworkManager 2>/dev/null || true
+systemctl enable redis-server 2>/dev/null || true
+systemctl enable docker 2>/dev/null || true
+systemctl enable ssh 2>/dev/null || true
+
+# --- 7. Abilita il servizio ForgeAI (quando sarà installato) ---
+# Il file .service verrà creato dall'installer, non qui
+# systemctl enable forge-ai 2>/dev/null || true
+
+# --- 8. Configura sudo per gli utenti del gruppo sudo ---
+# Già configurato di default su Debian, ma lo rendiamo esplicito
+echo "%sudo ALL=(ALL:ALL) ALL" > /etc/sudoers.d/devforge
+chmod 440 /etc/sudoers.d/devforge
+
+# --- 9. Limiti di sistema per sviluppo (file aperti, processi) ---
+cat >> /etc/security/limits.conf << 'LIMITSEOF'
+# DevForge OS — limiti aumentati per sviluppo
+*               soft    nofile          65536
+*               hard    nofile          65536
+*               soft    nproc           32768
+*               hard    nproc           32768
+LIMITSEOF
+
+# --- 10. Kernel parameters per sviluppo ---
+cat >> /etc/sysctl.d/99-devforge.conf << 'SYSCTLEOF'
+# Aumenta il numero massimo di file inotify (utile per webpack, vite, ecc.)
+fs.inotify.max_user_watches = 524288
+fs.inotify.max_user_instances = 256
+
+# Memoria virtuale per Node.js e altri runtime
+vm.max_map_count = 262144
+
+# Network performance
+net.core.rmem_max = 134217728
+net.core.wmem_max = 134217728
+SYSCTLEOF
+
+echo "=== DevForge OS: Configurazione base completata ==="

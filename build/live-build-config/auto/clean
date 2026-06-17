@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# =============================================================================
+# DevForge OS — live-build auto/clean
+# Pulisce i file temporanei della build precedente.
+# =============================================================================
+
+set -euo pipefail
+lb clean "${@}"
