@@ -16,8 +16,6 @@
 import subprocess
 import logging
 import os
-import crypt
-import secrets
 from pathlib import Path
 
 log = logging.getLogger('installer.system_configurator')
@@ -216,10 +214,6 @@ GRUB_GFXPAYLOAD_LINUX=keep
 
         self.log(f"Creazione utente: {username} ({full_name})...")
 
-        # Genera hash SHA-512 della password
-        salt = crypt.mksalt(crypt.METHOD_SHA512)
-        password_hash = crypt.crypt(password, salt)
-
         # Crea l'utente con useradd
         chroot_run([
             'useradd',
@@ -230,11 +224,11 @@ GRUB_GFXPAYLOAD_LINUX=keep
             username
         ])
 
-        # Imposta la password usando chpasswd con hash pre-calcolato
-        chroot_run(['chpasswd', '-e'], input_text=f"{username}:{password_hash}")
+        # chpasswd senza -e accetta password in chiaro e gestisce l'hash SHA-512 internamente
+        chroot_run(['chpasswd'], input_text=f"{username}:{password}")
 
-        # Imposta la password di root (uguale all'utente per semplicità)
-        chroot_run(['chpasswd', '-e'], input_text=f"root:{password_hash}")
+        # Imposta la stessa password per root
+        chroot_run(['chpasswd'], input_text=f"root:{password}")
 
         # Aggiunge al gruppo sudo se richiesto
         if use_sudo:
