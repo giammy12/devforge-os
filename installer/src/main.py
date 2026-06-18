@@ -113,7 +113,7 @@ class InstallerWindow(Adw.ApplicationWindow):
     def _load_css(self):
         """Carica il foglio di stile CSS per personalizzare l'aspetto GTK."""
         css_provider = Gtk.CssProvider()
-        css = b"""
+        css = """
         /* Sfondo principale scuro */
         window {
             background-color: #0A0F1A;
@@ -232,7 +232,7 @@ class InstallerWindow(Adw.ApplicationWindow):
             border-radius: 4px;
         }
         """
-        css_provider.load_from_data(css)
+        css_provider.load_from_data(css.encode('utf-8'))
         Gtk.StyleContext.add_provider_for_display(
             self.get_display(),
             css_provider,
