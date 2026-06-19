@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=DevForge TopBar
+Comment=Barra superiore del desktop DevForge OS
+Exec=devforge-topbar
+Icon=devforge-topbar
+Categories=System;
+X-GNOME-Autostart-enabled=true
+NoDisplay=true
+OnlyShowIn=devforge;
