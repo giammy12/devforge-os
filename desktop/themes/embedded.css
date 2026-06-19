@@ -1,0 +1,39 @@
+/* =============================================================================
+   DevForge OS — Tema Embedded (embedded_arduino / embedded_linux)
+   Accent: Arancione caldo #FF6600
+   ============================================================================= */
+
+@define-color accent_color             #FF6600;
+@define-color accent_bg_color          #E05500;
+@define-color accent_fg_color          #FFFFFF;
+
+@define-color df_accent_glow           rgba(255, 102, 0, 0.28);
+@define-color df_accent_subtle         rgba(255, 102, 0, 0.10);
+@define-color df_accent_mid            rgba(255, 102, 0, 0.38);
+
+/* Sintassi codice (C / C++ / Assembly / Makefile) */
+@define-color code_keyword             #FFB74D;
+@define-color code_string              #AED581;
+@define-color code_number              #FF8A65;
+@define-color code_comment             #546E7A;
+@define-color code_function            #81D4FA;
+@define-color code_type                #CE93D8;
+@define-color code_variable            #E0E0E0;
+@define-color code_macro               #FF6600;
+@define-color code_register            #FFB74D;
+
+/* Sfondo con leggera tinta marrone/caldo */
+@define-color window_bg_color          #0A0804;
+@define-color view_bg_color            #120E08;
+@define-color headerbar_bg_color       #160F09;
+@define-color card_bg_color            #1C1410;
+@define-color popover_bg_color         #18120C;
+
+.ws-dot-active {
+    background-color: @accent_bg_color;
+    box-shadow: 0 0 8px @df_accent_glow;
+}
+
+headerbar {
+    border-bottom: 2px solid alpha(@accent_color, 0.30);
+}

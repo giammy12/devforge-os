@@ -1,0 +1,10 @@
+#!/usr/bin/env @PYTHON@
+# Wrapper di avvio per devforge-apply-theme
+import sys
+import os
+
+sys.path.insert(0, '/usr/lib/python3/dist-packages/devforge/themes')
+os.environ.setdefault('DEVFORGE_THEMES_DIR', '@THEMES_DIR@')
+
+from apply_theme import main
+main()

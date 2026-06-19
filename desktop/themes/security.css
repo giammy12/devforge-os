@@ -1,0 +1,52 @@
+/* =============================================================================
+   DevForge OS — Tema Security (security_pentest / security_malware)
+   Accent: Rosso alert #FF3344
+   ============================================================================= */
+
+@define-color accent_color             #FF3344;
+@define-color accent_bg_color          #DD2233;
+@define-color accent_fg_color          #FFFFFF;
+
+@define-color df_accent_glow           rgba(255, 51, 68, 0.30);
+@define-color df_accent_subtle         rgba(255, 51, 68, 0.10);
+@define-color df_accent_mid            rgba(255, 51, 68, 0.38);
+
+/* Sintassi codice (Python / C / Assembly / Bash) */
+@define-color code_keyword             #FF7B93;
+@define-color code_string              #A8FF60;
+@define-color code_number              #FFD580;
+@define-color code_comment             #5C6773;
+@define-color code_function            #FFB454;
+@define-color code_type                #73D0FF;
+@define-color code_variable            #CBCCC6;
+@define-color code_hex                 #FF3344;
+@define-color code_address             #FF7B93;
+
+/* Sfondo molto scuro, quasi nero — più oppressivo per il tema security */
+@define-color window_bg_color          #060508;
+@define-color view_bg_color            #0C090D;
+@define-color headerbar_bg_color       #0E0B10;
+@define-color card_bg_color            #14101A;
+@define-color popover_bg_color         #110D16;
+@define-color df_bg1                   #0C090D;
+@define-color df_bg2                   #14101A;
+@define-color df_bg3                   #1C1525;
+
+.ws-dot-active {
+    background-color: @accent_bg_color;
+    box-shadow: 0 0 10px @df_accent_glow;
+}
+
+headerbar {
+    border-bottom: 2px solid alpha(@accent_color, 0.30);
+}
+
+/* Terminal output coloring per output offensive tools */
+textview {
+    background-color: #02010A;
+    color: #D8F0C8;
+}
+textview > text {
+    background-color: #02010A;
+    color: #D8F0C8;
+}

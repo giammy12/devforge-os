@@ -1,0 +1,39 @@
+/* =============================================================================
+   DevForge OS — Tema AI/ML (ai_ml / ai_data)
+   Accent: Verde smeraldo #00CC66
+   ============================================================================= */
+
+@define-color accent_color             #00CC66;
+@define-color accent_bg_color          #00AA55;
+@define-color accent_fg_color          #001A0E;
+
+@define-color df_accent_glow           rgba(0, 204, 102, 0.28);
+@define-color df_accent_subtle         rgba(0, 204, 102, 0.10);
+@define-color df_accent_mid            rgba(0, 204, 102, 0.38);
+
+/* Sintassi codice (Python / Jupyter / R) */
+@define-color code_keyword             #89DDFF;
+@define-color code_string              #C3E88D;
+@define-color code_number              #F78C6C;
+@define-color code_comment             #546E7A;
+@define-color code_function            #82AAFF;
+@define-color code_type                #FFCB6B;
+@define-color code_variable            #EEFFFF;
+@define-color code_decorator           #00CC66;
+@define-color code_builtin             #89DDFF;
+
+/* Sfondo con leggera tinta verde per i profili AI */
+@define-color window_bg_color          #050E0A;
+@define-color view_bg_color            #0B1610;
+@define-color headerbar_bg_color       #0D1A12;
+@define-color card_bg_color            #122018;
+@define-color popover_bg_color         #0F1C14;
+
+.ws-dot-active {
+    background-color: @accent_bg_color;
+    box-shadow: 0 0 8px @df_accent_glow;
+}
+
+headerbar {
+    border-bottom: 2px solid alpha(@accent_color, 0.30);
+}

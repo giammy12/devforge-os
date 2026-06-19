@@ -1,0 +1,39 @@
+/* =============================================================================
+   DevForge OS — Tema Game (game_unity / game_unreal / game_godot)
+   Accent: Viola intenso #7B2FFF
+   ============================================================================= */
+
+@define-color accent_color             #7B2FFF;
+@define-color accent_bg_color          #6A25EE;
+@define-color accent_fg_color          #FFFFFF;
+
+@define-color df_accent_glow           rgba(123, 47, 255, 0.32);
+@define-color df_accent_subtle         rgba(123, 47, 255, 0.10);
+@define-color df_accent_mid            rgba(123, 47, 255, 0.40);
+
+/* Sintassi codice (C# / Blueprint / GDScript) */
+@define-color code_keyword             #C792EA;
+@define-color code_string              #A8FF60;
+@define-color code_number              #FF9CAC;
+@define-color code_comment             #546E7A;
+@define-color code_function            #82AAFF;
+@define-color code_type                #FFCB6B;
+@define-color code_variable            #F07178;
+@define-color code_tag                 #C792EA;
+@define-color code_attribute           #FFCB6B;
+
+/* Sfondo leggermente più caldo per i profili game */
+@define-color window_bg_color          #080612;
+@define-color view_bg_color            #0F0D20;
+@define-color headerbar_bg_color       #100E22;
+@define-color card_bg_color            #16122A;
+@define-color popover_bg_color         #131025;
+
+.ws-dot-active {
+    background-color: @accent_bg_color;
+    box-shadow: 0 0 10px @df_accent_glow;
+}
+
+headerbar {
+    border-bottom: 2px solid alpha(@accent_color, 0.35);
+}

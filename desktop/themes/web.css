@@ -1,0 +1,35 @@
+/* =============================================================================
+   DevForge OS — Tema Web (web_frontend / web_backend / web_fullstack)
+   Accent: Blu elettrico #0066FF
+   ============================================================================= */
+
+@define-color accent_color             #0066FF;
+@define-color accent_bg_color          #0055DD;
+@define-color accent_fg_color          #FFFFFF;
+
+/* Tinte aggiuntive specifiche del profilo */
+@define-color df_accent_glow           rgba(0, 102, 255, 0.28);
+@define-color df_accent_subtle         rgba(0, 102, 255, 0.10);
+@define-color df_accent_mid            rgba(0, 102, 255, 0.40);
+
+/* Sintassi codice (usata da ForgeIDE per file HTML/CSS/JS) */
+@define-color code_keyword             #79B8FF;
+@define-color code_string              #9ECBFF;
+@define-color code_number              #F8E3A1;
+@define-color code_comment             #444D56;
+@define-color code_function            #B392F0;
+@define-color code_type                #85E89D;
+@define-color code_variable            #FFAB70;
+@define-color code_tag                 #79B8FF;
+@define-color code_attribute           #B392F0;
+
+/* Dock: evidenziazione dot workspace */
+.ws-dot-active {
+    background-color: @accent_bg_color;
+    box-shadow: 0 0 8px @df_accent_glow;
+}
+
+/* Header accent strip sottile */
+headerbar {
+    border-bottom: 2px solid alpha(@accent_color, 0.35);
+}

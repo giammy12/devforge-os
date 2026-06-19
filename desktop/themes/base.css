@@ -1,0 +1,636 @@
+/* =============================================================================
+   DevForge OS — Tema base
+   base.css — Stili dark fondamentali condivisi da tutti i profili
+   ============================================================================= */
+
+/* ── Variabili colore Adwaita/GTK4 ────────────────────────────────────────── */
+/* Le variabili @accent_* vengono sovrascritte dai file profilo.               */
+
+@define-color accent_color             #0066FF;
+@define-color accent_bg_color          #0066FF;
+@define-color accent_fg_color          #FFFFFF;
+
+@define-color destructive_color        #FF4444;
+@define-color destructive_bg_color     #CC2233;
+@define-color destructive_fg_color     #FFFFFF;
+
+@define-color success_color            #00D4AA;
+@define-color success_bg_color         #009F80;
+@define-color success_fg_color         #FFFFFF;
+
+@define-color warning_color            #FFB800;
+@define-color warning_bg_color         #CC9200;
+@define-color warning_fg_color         #1A1200;
+
+@define-color error_color              #FF4444;
+@define-color error_bg_color           #CC2222;
+@define-color error_fg_color           #FFFFFF;
+
+/* ── Sfondi principali ──────────────────────────────────────────────────────── */
+@define-color window_bg_color          #060A12;
+@define-color window_fg_color          #E8F0FE;
+
+@define-color view_bg_color            #0D1525;
+@define-color view_fg_color            #E8F0FE;
+
+@define-color headerbar_bg_color       #0D1525;
+@define-color headerbar_fg_color       #E8F0FE;
+@define-color headerbar_border_color   rgba(255, 255, 255, 0.06);
+@define-color headerbar_backdrop_color #060A12;
+@define-color headerbar_shade_color    rgba(0, 0, 0, 0.45);
+@define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.55);
+
+@define-color sidebar_bg_color         #0A1020;
+@define-color sidebar_fg_color         #E8F0FE;
+@define-color sidebar_backdrop_color   #060A12;
+@define-color sidebar_shade_color      rgba(0, 0, 0, 0.28);
+
+@define-color card_bg_color            #141E35;
+@define-color card_fg_color            #E8F0FE;
+@define-color card_shade_color         rgba(0, 0, 0, 0.32);
+
+@define-color thumbnail_bg_color       #141E35;
+@define-color thumbnail_fg_color       #E8F0FE;
+
+@define-color dialog_bg_color          #0D1525;
+@define-color dialog_fg_color          #E8F0FE;
+
+@define-color popover_bg_color         #111828;
+@define-color popover_fg_color         #E8F0FE;
+
+@define-color shade_color              rgba(0, 0, 0, 0.40);
+@define-color scrollbar_outline_color  rgba(0, 0, 0, 0.55);
+
+/* ── Palette DevForge (usabile nei widget custom) ─────────────────────────── */
+@define-color df_bg0               #060A12;
+@define-color df_bg1               #0D1525;
+@define-color df_bg2               #111E35;
+@define-color df_bg3               #172540;
+@define-color df_surface           #141E35;
+@define-color df_border            rgba(255, 255, 255, 0.07);
+@define-color df_border_strong     rgba(255, 255, 255, 0.14);
+@define-color df_text_primary      #E8F0FE;
+@define-color df_text_secondary    #8BA2CC;
+@define-color df_text_disabled     #4A5E80;
+@define-color df_overlay_hover     rgba(255, 255, 255, 0.06);
+@define-color df_overlay_active    rgba(255, 255, 255, 0.10);
+@define-color df_overlay_focus     rgba(255, 255, 255, 0.04);
+
+
+/* =============================================================================
+   Stili widget
+   ============================================================================= */
+
+/* ── Finestra ──────────────────────────────────────────────────────────────── */
+window,
+.background {
+    background-color: @window_bg_color;
+    color: @window_fg_color;
+}
+
+/* ── Header bar ────────────────────────────────────────────────────────────── */
+headerbar {
+    background-color: @headerbar_bg_color;
+    color: @headerbar_fg_color;
+    border-bottom: 1px solid @headerbar_border_color;
+    box-shadow: none;
+    padding: 4px 8px;
+    min-height: 44px;
+}
+headerbar:backdrop {
+    background-color: @headerbar_backdrop_color;
+    color: alpha(@headerbar_fg_color, 0.6);
+}
+.titlebar .title {
+    font-weight: 600;
+    font-size: 13px;
+    color: @df_text_primary;
+}
+.titlebar .subtitle {
+    font-size: 11px;
+    color: @df_text_secondary;
+}
+
+/* ── Pulsanti ──────────────────────────────────────────────────────────────── */
+button {
+    background-color: @df_bg2;
+    color: @df_text_primary;
+    border: 1px solid @df_border;
+    border-radius: 8px;
+    padding: 6px 14px;
+    transition: background-color 120ms ease, border-color 120ms ease,
+                box-shadow 120ms ease;
+}
+button:hover {
+    background-color: @df_bg3;
+    border-color: @df_border_strong;
+}
+button:active {
+    background-color: @df_overlay_active;
+}
+button:focus:not(:focus-visible) {
+    outline: none;
+}
+button:focus-visible {
+    outline: 2px solid alpha(@accent_color, 0.7);
+    outline-offset: 2px;
+}
+button:disabled {
+    opacity: 0.4;
+}
+
+/* Pulsante suggerito (accent) */
+button.suggested-action {
+    background-color: @accent_bg_color;
+    color: @accent_fg_color;
+    border-color: transparent;
+    font-weight: 600;
+}
+button.suggested-action:hover {
+    background-color: mix(@accent_bg_color, white, 0.10);
+}
+button.suggested-action:active {
+    background-color: mix(@accent_bg_color, black, 0.10);
+}
+
+/* Pulsante distruttivo */
+button.destructive-action {
+    background-color: @destructive_bg_color;
+    color: @destructive_fg_color;
+    border-color: transparent;
+    font-weight: 600;
+}
+button.destructive-action:hover {
+    background-color: mix(@destructive_bg_color, white, 0.10);
+}
+
+/* Pulsante flat (senza sfondo) */
+button.flat {
+    background-color: transparent;
+    border-color: transparent;
+}
+button.flat:hover {
+    background-color: @df_overlay_hover;
+}
+button.flat:active {
+    background-color: @df_overlay_active;
+}
+
+/* ── Campi di testo ────────────────────────────────────────────────────────── */
+entry,
+spinbutton,
+searchentry {
+    background-color: @df_bg1;
+    color: @df_text_primary;
+    border: 1px solid @df_border;
+    border-radius: 8px;
+    padding: 8px 12px;
+    caret-color: @accent_color;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+entry:focus,
+spinbutton:focus,
+searchentry:focus {
+    border-color: @accent_color;
+    box-shadow: 0 0 0 2px alpha(@accent_color, 0.20);
+    outline: none;
+}
+entry:disabled,
+spinbutton:disabled {
+    opacity: 0.4;
+}
+entry selection {
+    background-color: alpha(@accent_color, 0.30);
+    color: @df_text_primary;
+}
+entry placeholder {
+    color: @df_text_disabled;
+}
+
+/* ── Listbox / ListView ────────────────────────────────────────────────────── */
+listview,
+listbox {
+    background-color: @view_bg_color;
+    color: @view_fg_color;
+    border-radius: 10px;
+    border: 1px solid @df_border;
+}
+listview > row,
+listbox > row {
+    padding: 10px 14px;
+    border-bottom: 1px solid @df_border;
+    transition: background-color 100ms ease;
+}
+listview > row:last-child,
+listbox > row:last-child {
+    border-bottom: none;
+}
+listview > row:hover,
+listbox > row:hover {
+    background-color: @df_overlay_hover;
+}
+listview > row:selected,
+listbox > row:selected {
+    background-color: alpha(@accent_color, 0.18);
+    color: @df_text_primary;
+}
+listview > row:selected:hover,
+listbox > row:selected:hover {
+    background-color: alpha(@accent_color, 0.24);
+}
+
+/* ── Card / ActionRow ──────────────────────────────────────────────────────── */
+.card {
+    background-color: @card_bg_color;
+    border: 1px solid @df_border;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+.card:hover {
+    border-color: @df_border_strong;
+}
+
+/* ── Sidebar ───────────────────────────────────────────────────────────────── */
+.sidebar {
+    background-color: @sidebar_bg_color;
+    color: @sidebar_fg_color;
+    border-right: 1px solid @df_border;
+}
+.sidebar row {
+    padding: 8px 14px;
+    border-radius: 8px;
+    margin: 2px 6px;
+}
+.sidebar row:hover {
+    background-color: @df_overlay_hover;
+}
+.sidebar row:selected {
+    background-color: alpha(@accent_color, 0.18);
+    color: @accent_color;
+    font-weight: 600;
+}
+
+/* ── Switch ────────────────────────────────────────────────────────────────── */
+switch {
+    background-color: @df_bg2;
+    border: 1px solid @df_border;
+    border-radius: 14px;
+    min-height: 26px;
+    min-width: 48px;
+    transition: background-color 200ms ease;
+}
+switch:checked {
+    background-color: @accent_bg_color;
+    border-color: transparent;
+}
+switch slider {
+    background-color: white;
+    border-radius: 50%;
+    min-height: 20px;
+    min-width: 20px;
+    margin: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    transition: transform 200ms ease;
+}
+switch:focus-visible {
+    outline: 2px solid alpha(@accent_color, 0.6);
+    outline-offset: 2px;
+}
+
+/* ── Check / Radio ─────────────────────────────────────────────────────────── */
+checkbutton > check,
+radiobutton > radio {
+    background-color: @df_bg2;
+    border: 2px solid @df_border_strong;
+    border-radius: 4px;
+    min-height: 18px;
+    min-width: 18px;
+    transition: background-color 150ms ease, border-color 150ms ease;
+}
+checkbutton > check:checked,
+radiobutton > radio:checked {
+    background-color: @accent_bg_color;
+    border-color: @accent_bg_color;
+    color: @accent_fg_color;
+}
+radiobutton > radio {
+    border-radius: 50%;
+}
+checkbutton > check:focus-visible,
+radiobutton > radio:focus-visible {
+    outline: 2px solid alpha(@accent_color, 0.6);
+    outline-offset: 2px;
+}
+
+/* ── Progress bar ──────────────────────────────────────────────────────────── */
+progressbar > trough {
+    background-color: @df_bg2;
+    border-radius: 4px;
+    border: none;
+    min-height: 6px;
+}
+progressbar > trough > progress {
+    background-color: @accent_bg_color;
+    border-radius: 4px;
+    min-height: 6px;
+    transition: min-width 300ms ease;
+}
+progressbar.osd > trough {
+    background-color: rgba(255, 255, 255, 0.15);
+    min-height: 4px;
+}
+progressbar.osd > trough > progress {
+    min-height: 4px;
+}
+
+/* ── Scala (slider) ────────────────────────────────────────────────────────── */
+scale > trough {
+    background-color: @df_bg2;
+    border-radius: 4px;
+    min-height: 6px;
+    border: none;
+}
+scale > trough > fill {
+    background-color: @accent_bg_color;
+    border-radius: 4px;
+}
+scale > trough > slider {
+    background-color: white;
+    border-radius: 50%;
+    min-height: 18px;
+    min-width: 18px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 120ms ease;
+}
+scale > trough > slider:hover {
+    transform: scale(1.1);
+}
+scale:focus-visible > trough > slider {
+    outline: 2px solid alpha(@accent_color, 0.6);
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────────────── */
+scrollbar {
+    background-color: transparent;
+    border: none;
+}
+scrollbar > range > trough {
+    background-color: transparent;
+}
+scrollbar > range > trough > slider {
+    background-color: rgba(255, 255, 255, 0.18);
+    border-radius: 4px;
+    min-width: 6px;
+    min-height: 6px;
+    margin: 2px;
+    transition: background-color 150ms ease, min-width 150ms ease;
+}
+scrollbar > range > trough > slider:hover {
+    background-color: rgba(255, 255, 255, 0.28);
+    min-width: 8px;
+}
+scrollbar > range > trough > slider:active {
+    background-color: @accent_color;
+    min-width: 8px;
+}
+
+/* ── Dropdown / ComboBox ───────────────────────────────────────────────────── */
+dropdown,
+combobox {
+    background-color: @df_bg2;
+    border: 1px solid @df_border;
+    border-radius: 8px;
+    padding: 6px 10px;
+    transition: border-color 150ms ease;
+}
+dropdown:focus,
+combobox:focus {
+    border-color: @accent_color;
+    box-shadow: 0 0 0 2px alpha(@accent_color, 0.20);
+}
+.dropdown-popup {
+    background-color: @popover_bg_color;
+    border: 1px solid @df_border;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Popover ───────────────────────────────────────────────────────────────── */
+popover > contents {
+    background-color: @popover_bg_color;
+    border: 1px solid @df_border;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+    padding: 6px;
+}
+
+/* ── Tooltip ───────────────────────────────────────────────────────────────── */
+tooltip {
+    background-color: #1A2A45;
+    color: @df_text_primary;
+    border: 1px solid @df_border_strong;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Notebook (tab) ─────────────────────────────────────────────────────────── */
+notebook > header {
+    background-color: @df_bg1;
+    border-bottom: 1px solid @df_border;
+    padding: 4px 4px 0;
+}
+notebook > header > tabs > tab {
+    background-color: transparent;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    padding: 8px 16px;
+    color: @df_text_secondary;
+    font-size: 13px;
+    transition: color 150ms ease, background-color 150ms ease;
+}
+notebook > header > tabs > tab:hover {
+    background-color: @df_overlay_hover;
+    color: @df_text_primary;
+}
+notebook > header > tabs > tab:checked {
+    background-color: @df_bg2;
+    color: @df_text_primary;
+    font-weight: 600;
+    border-bottom: 2px solid @accent_color;
+}
+notebook > stack {
+    background-color: @df_bg2;
+}
+
+/* ── TreeView ──────────────────────────────────────────────────────────────── */
+treeview {
+    background-color: @view_bg_color;
+    color: @view_fg_color;
+    border: 1px solid @df_border;
+}
+treeview header button {
+    background-color: @df_bg1;
+    border: none;
+    border-bottom: 1px solid @df_border;
+    border-right: 1px solid @df_border;
+    border-radius: 0;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: @df_text_secondary;
+}
+treeview:selected {
+    background-color: alpha(@accent_color, 0.22);
+    color: @df_text_primary;
+}
+
+/* ── TextView (editor di testo / terminale) ─────────────────────────────────── */
+textview {
+    background-color: #040810;
+    color: #C8D8F0;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', 'Cascadia Code', monospace;
+    font-size: 13px;
+    caret-color: @accent_color;
+}
+textview > text {
+    background-color: #040810;
+    color: #C8D8F0;
+}
+textview > text selection {
+    background-color: alpha(@accent_color, 0.30);
+    color: #E8F0FE;
+}
+
+/* ── Menu ──────────────────────────────────────────────────────────────────── */
+menu {
+    background-color: @popover_bg_color;
+    color: @df_text_primary;
+    border: 1px solid @df_border;
+    border-radius: 10px;
+    padding: 4px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+}
+menuitem {
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: background-color 100ms ease;
+}
+menuitem:hover {
+    background-color: alpha(@accent_color, 0.16);
+    color: @df_text_primary;
+}
+menuitem:disabled {
+    opacity: 0.4;
+}
+separator {
+    background-color: @df_border;
+    min-height: 1px;
+    margin: 4px 8px;
+}
+
+/* ── Barra di avanzamento installazione (DevForge Installer) ──────────────── */
+.step-dot {
+    border-radius: 50%;
+    min-width: 10px;
+    min-height: 10px;
+    transition: background-color 250ms ease, border-color 250ms ease;
+}
+.step-dot.active {
+    background-color: @accent_color;
+    box-shadow: 0 0 8px alpha(@accent_color, 0.5);
+}
+.step-dot.done {
+    background-color: @success_color;
+}
+.step-dot.pending {
+    background-color: transparent;
+    border: 2px solid @df_border_strong;
+}
+
+/* ── Stile globale del testo ─────────────────────────────────────────────────── */
+label {
+    color: @df_text_primary;
+}
+label.dim-label,
+label.subtitle {
+    color: @df_text_secondary;
+    font-size: 12px;
+}
+label.title-1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: @df_text_primary;
+}
+label.title-2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: @df_text_primary;
+}
+label.title-3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: @df_text_primary;
+}
+label.title-4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: @df_text_primary;
+}
+label.caption {
+    font-size: 11px;
+    color: @df_text_secondary;
+}
+label.monospace {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+    font-size: 12px;
+    color: #C8D8F0;
+}
+
+/* ── Adw specifics ──────────────────────────────────────────────────────────── */
+.navigation-sidebar {
+    background-color: @sidebar_bg_color;
+    border-right: 1px solid @df_border;
+}
+.navigation-sidebar > row {
+    border-radius: 8px;
+    margin: 2px 6px;
+    padding: 10px 14px;
+}
+.navigation-sidebar > row:selected {
+    background-color: alpha(@accent_color, 0.18);
+    color: @accent_color;
+}
+
+.preferences-group > box > box > label.title {
+    font-size: 14px;
+    font-weight: 700;
+    color: @accent_color;
+    margin-top: 16px;
+    margin-bottom: 4px;
+}
+
+/* ── Banner e notifiche ─────────────────────────────────────────────────────── */
+.app-notification {
+    background-color: @df_surface;
+    border: 1px solid @df_border;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+.info-bar {
+    background-color: alpha(@accent_color, 0.12);
+    border: 1px solid alpha(@accent_color, 0.25);
+    border-radius: 8px;
+    color: @df_text_primary;
+}
+.warning-bar {
+    background-color: alpha(@warning_color, 0.12);
+    border: 1px solid alpha(@warning_color, 0.25);
+    border-radius: 8px;
+}
+.error-bar {
+    background-color: alpha(@error_color, 0.12);
+    border: 1px solid alpha(@error_color, 0.25);
+    border-radius: 8px;
+}

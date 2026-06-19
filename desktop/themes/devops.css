@@ -1,0 +1,39 @@
+/* =============================================================================
+   DevForge OS — Tema DevOps (devops_docker / devops_cloud)
+   Accent: Ciano #00AAFF
+   ============================================================================= */
+
+@define-color accent_color             #00AAFF;
+@define-color accent_bg_color          #0088DD;
+@define-color accent_fg_color          #FFFFFF;
+
+@define-color df_accent_glow           rgba(0, 170, 255, 0.28);
+@define-color df_accent_subtle         rgba(0, 170, 255, 0.10);
+@define-color df_accent_mid            rgba(0, 170, 255, 0.38);
+
+/* Sintassi codice (YAML / Dockerfile / Bash / Terraform) */
+@define-color code_keyword             #00AAFF;
+@define-color code_string              #ADDB67;
+@define-color code_number              #F78C6C;
+@define-color code_comment             #637777;
+@define-color code_function            #80CBC4;
+@define-color code_type                #FFCB6B;
+@define-color code_variable            #EEFFFF;
+@define-color code_key                 #7FDBCA;
+@define-color code_anchor              #C792EA;
+
+/* Sfondo con tinta ciano molto scura */
+@define-color window_bg_color          #040C12;
+@define-color view_bg_color            #081420;
+@define-color headerbar_bg_color       #0A1825;
+@define-color card_bg_color            #0E1E30;
+@define-color popover_bg_color         #0C1A2A;
+
+.ws-dot-active {
+    background-color: @accent_bg_color;
+    box-shadow: 0 0 8px @df_accent_glow;
+}
+
+headerbar {
+    border-bottom: 2px solid alpha(@accent_color, 0.30);
+}
