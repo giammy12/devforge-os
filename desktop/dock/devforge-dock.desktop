@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=DevForge Dock
+Comment=Dock del desktop DevForge OS
+Exec=devforge-dock
+Icon=devforge-dock
+Categories=System;
+X-GNOME-Autostart-enabled=true
+NoDisplay=true
+OnlyShowIn=devforge;

@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+# Script di avvio del dock DevForge OS
+import sys
+import os
+
+sys.path.insert(0, '/usr/lib/python3/dist-packages/devforge/dock')
+
+from dock import main
+main()
