@@ -102,8 +102,9 @@ class UserSetupScreen(Gtk.Box):
 
         # --- Password ---
         content.append(self._make_label("Password"))
-        self.pw_entry = Gtk.PasswordEntry()
-        self.pw_entry.set_show_peek_icon(True)
+        self.pw_entry = Gtk.Entry()
+        self.pw_entry.set_visibility(False)
+        self.pw_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD)
         self.pw_entry.set_placeholder_text("Scegli una password sicura...")
         self.pw_entry.connect('changed', self._on_password_changed)
         content.append(self.pw_entry)
@@ -122,8 +123,9 @@ class UserSetupScreen(Gtk.Box):
 
         # --- Conferma password ---
         content.append(self._make_label("Conferma password"))
-        self.pw2_entry = Gtk.PasswordEntry()
-        self.pw2_entry.set_show_peek_icon(True)
+        self.pw2_entry = Gtk.Entry()
+        self.pw2_entry.set_visibility(False)
+        self.pw2_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD)
         self.pw2_entry.set_placeholder_text("Ripeti la password...")
         self.pw2_entry.connect('changed', self._update_next_button)
         content.append(self.pw2_entry)

@@ -175,8 +175,9 @@ class DiskSetupScreen(Gtk.Box):
         pw_label.set_halign(Gtk.Align.START)
         encrypt_pass_box.append(pw_label)
 
-        self.encrypt_pw = Gtk.PasswordEntry()
-        self.encrypt_pw.set_show_peek_icon(True)
+        self.encrypt_pw = Gtk.Entry()
+        self.encrypt_pw.set_visibility(False)
+        self.encrypt_pw.set_input_purpose(Gtk.InputPurpose.PASSWORD)
         self.encrypt_pw.set_placeholder_text("Password disco...")
         encrypt_pass_box.append(self.encrypt_pw)
 
@@ -185,8 +186,9 @@ class DiskSetupScreen(Gtk.Box):
         pw2_label.set_halign(Gtk.Align.START)
         encrypt_pass_box.append(pw2_label)
 
-        self.encrypt_pw2 = Gtk.PasswordEntry()
-        self.encrypt_pw2.set_show_peek_icon(True)
+        self.encrypt_pw2 = Gtk.Entry()
+        self.encrypt_pw2.set_visibility(False)
+        self.encrypt_pw2.set_input_purpose(Gtk.InputPurpose.PASSWORD)
         self.encrypt_pw2.set_placeholder_text("Ripeti password...")
         encrypt_pass_box.append(self.encrypt_pw2)
 
